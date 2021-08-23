@@ -1,3 +1,4 @@
+---------- Create Tables -----------------------
 DROP TABLE IF EXISTS public.authors;
 
 CREATE TABLE
@@ -26,6 +27,7 @@ CREATE TABLE
 				updated_at TIMESTAMP DEFAULT NOW()
 		);
 
+---------------- Insert Authors --------------------
 INSERT INTO authors(name,last_name,birth_year,country) VALUES('Dan','Brown',1964,'USA');
 INSERT INTO authors(name,last_name,birth_year,country) VALUES('Agatha','Christie',1890,'UK');
 INSERT INTO authors(name,last_name,birth_year,country) VALUES('Paulo','Coelho',1947,'Brazil');
@@ -35,6 +37,7 @@ INSERT INTO authors(name,last_name,birth_year,country) VALUES('Stephen','King',1
 INSERT INTO authors(name,last_name,birth_year,country) VALUES('Haruki','Murakami',1949,'Japan');
 INSERT INTO authors(name,last_name,birth_year,country) VALUES('James','Patterson',1947,'USA');
 
+------------------Insert Books ---------------------------
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Da Vinci Code','mystery thriller','https://images-na.ssl-images-amazon.com/images/I/61voOxiNf9L.jpg','Dan Brown','2003-03-18');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Angels and Demons','mystery thriller','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj8XUReijor_2XAJnJ26i1_-J8bxbnEWXE6CYTOuEwjczu8wSl','Dan Brown','2000-05-01');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('The Lost Symbol','mystery thriller','https://images-na.ssl-images-amazon.com/images/I/71X1p4TGlxL.jpg','Dan Brown','2009-09-15');
@@ -69,49 +72,76 @@ INSERT INTO books(name,category,cover,author,published_at) VALUES('The Red Book'
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Along Came a Spider','Crime','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388272560l/13145.jpg','James Patterson','1993-02-01');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Ali Cross','Crime','https://s3.amazonaws.com/ArchiveImages/LegacyReviews/SLJ/9780316530415.jpg','James Patterson','2019-11-25');
 
+
+---------- EX 1 -----------------
 UPDATE public.books 
 	set cover = 'https://upload.wikimedia.org/wikipedia/pt/6/6d/Codigo-da-vinci-poster091.jpg' 
 		WHERE
 			id = 1
 			RETURNING *
 
+---------- EX 2 -----------------
 UPDATE public.authors
 	set birth_year =  1948
 		WHERE
 			id = 6
 			RETURNING *
 
+---------- EX 3 -----------------
 SELECT DISTINCT category
 FROM public.books
 
+---------- EX 4 -----------------
 SELECT * 
 FROM public.books
 	WHERE category LIKE 'Fantasy'
 
+---------- EX 5 -----------------
 SELECT * 
 FROM public.books
 	WHERE name LIKE 'F%'
 
+---------- EX 6 -----------------
 SELECT * 
 FROM public.books
 	WHERE name LIKE '%Giants%'
 
+---------- EX 7 -----------------
 SELECT * 
 FROM public.authors
-	WHERE birth_year > 1961
+	WHERE (EXTRACT(YEAR FROM now()) - birth_year) < 60
 
+---------- EX 8 -----------------
 SELECT * 
 FROM public.authors
-	WHERE birth_year < 1981
+	WHERE (EXTRACT(YEAR FROM now()) - birth_year) > 40
 
+---------- EX 9 -----------------
 SELECT category,published_at
 FROM public.books
 
+---------- EX 10 -----------------
 SELECT COUNT(*)
 FROM public.books
 
+---------- EX 11 -----------------
 SELECT *
 FROM public.authors
-	ORDER BY (Now(), birth_year) ASC
+	ORDER BY (EXTRACT(YEAR FROM now()) - birth_year) ASC
 
+---------- EX 12 -----------------
+SELECT *
+FROM public.authors
+	ORDER BY birth_year DESC
 
+---------- EX 13 -----------------
+DELETE FROM public.authors 
+WHERE country LIKE 'USA'
+
+---------- EX 14 -----------------
+DELETE FROM public.books 
+WHERE category LIKE 'Legal thriller,'
+
+---------- EX 15 -----------------
+DELETE FROM public.authors
+WHERE last_name LIKE 'H%,'
