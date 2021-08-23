@@ -1,3 +1,29 @@
+DROP TABLE IF EXISTS public.authors;
+
+CREATE TABLE
+	IF NOT EXISTS
+		authors(
+				name VARCHAR NOT NULL,
+				last_name VARCHAR NOT NULL,
+				birth_year INTEGER NOT NULL,
+				country VARCHAR NOT NULL
+		);
+
+
+DROP TABLE IF EXISTS public.books;
+
+CREATE TABLE
+	IF NOT EXISTS
+		books(
+				name VARCHAR NOT NULL,
+				category VARCHAR NOT NULL,
+				cover VARCHAR NOT NULL,
+				author VARCHAR NOT NULL,
+				published_at DATE NOT NULL,
+				created_at TIMESTAMP DEFAULT NOW(),
+				updated_at TIMESTAMP DEFAULT NOW()
+		);
+
 INSERT INTO authors(name,last_name,birth_year,country) VALUES('Dan','Brown',1964,'USA');
 INSERT INTO authors(name,last_name,birth_year,country) VALUES('Agatha','Christie',1890,'UK');
 INSERT INTO authors(name,last_name,birth_year,country) VALUES('Paulo','Coelho',1947,'Brazil');
@@ -40,3 +66,4 @@ INSERT INTO books(name,category,cover,author,published_at) VALUES('Kafka on the 
 INSERT INTO books(name,category,cover,author,published_at) VALUES('The Red Book','Crime','https://www.littlebrown.com/wp-content/uploads/2020/12/9780316499408-1.jpg?fit=484%2C750','James Patterson','2021-03-29');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Along Came a Spider','Crime','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388272560l/13145.jpg','James Patterson','1993-02-01');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Ali Cross','Crime','https://s3.amazonaws.com/ArchiveImages/LegacyReviews/SLJ/9780316530415.jpg','James Patterson','2019-11-25');
+
