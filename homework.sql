@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS public.authors;
 CREATE TABLE
 	IF NOT EXISTS
 		authors(
+				id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 				name VARCHAR NOT NULL,
 				last_name VARCHAR NOT NULL,
 				birth_year INTEGER NOT NULL,
@@ -14,7 +15,8 @@ DROP TABLE IF EXISTS public.books;
 
 CREATE TABLE
 	IF NOT EXISTS
-		books(
+		books(	
+				id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 				name VARCHAR NOT NULL,
 				category VARCHAR NOT NULL,
 				cover VARCHAR NOT NULL,
@@ -51,13 +53,13 @@ INSERT INTO books(name,category,cover,author,published_at) VALUES('The Pillars o
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Fall of Giants','Historical','https://m.media-amazon.com/images/I/51PSEPcKYsL.jpg','Ken Follett','2010-09-10');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('World Without End','Historical','https://cdn.waterstones.com/bookjackets/large/9781/5098/9781509848508.jpg','Ken Follett','2007-01-01');
 
-INSERT INTO books(name,category,cover,author,published_at) VALUES('A time to kill','Legal thriller,','https://m.media-amazon.com/images/I/51n7m1p75EL.jpg','John Grisham','1989-01-01');
-INSERT INTO books(name,category,cover,author,published_at) VALUES('The Firm','Legal thriller,','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTXx8M53kMLeKIUs26LgdsD_pDad2MWyqL7m2f491ChHhrWZ8Y','John Grisham','1991-02-01');
-INSERT INTO books(name,category,cover,author,published_at) VALUES('A Time for Mercy','Legal thriller,','https://images-na.ssl-images-amazon.com/images/I/913YS-xyYBL.jpg','John Grisham','2020-10-13');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('A time to kill','Legal thriller','https://m.media-amazon.com/images/I/51n7m1p75EL.jpg','John Grisham','1989-01-01');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('The Firm','Legal thriller','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTXx8M53kMLeKIUs26LgdsD_pDad2MWyqL7m2f491ChHhrWZ8Y','John Grisham','1991-02-01');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('A Time for Mercy','Legal thriller','https://images-na.ssl-images-amazon.com/images/I/913YS-xyYBL.jpg','John Grisham','2020-10-13');
 
-INSERT INTO books(name,category,cover,author,published_at) VALUES('The Gunslinger','Fantasy,','https://images-na.ssl-images-amazon.com/images/I/4153HF0AQAL.jpg','Stephen King','2003-07-01');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('The Gunslinger','Fantasy','https://images-na.ssl-images-amazon.com/images/I/4153HF0AQAL.jpg','Stephen King','2003-07-01');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('The Shining','Horror','https://upload.wikimedia.org/wikipedia/en/4/4c/Shiningnovel.jpg','Stephen King','1977-01-28');
-INSERT INTO books(name,category,cover,author,published_at) VALUES('It','Horror,','https://upload.wikimedia.org/wikipedia/en/7/78/It_%28Stephen_King_novel_-_cover_art%29.jpg','Stephen King','1986-09-15');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('It','Horror','https://upload.wikimedia.org/wikipedia/en/7/78/It_%28Stephen_King_novel_-_cover_art%29.jpg','Stephen King','1986-09-15');
 
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Norwegian Wood','Romance','https://images-na.ssl-images-amazon.com/images/I/91fJxgs69QL.jpg','Haruki Murakami','1987-01-01');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('1Q84','Alternate history','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBQZSg-b2LFkLlt9fWndS1w8SONabDZBHf0dtdb3-bqcuKxduL','Haruki Murakami','2011-05-25');
@@ -66,4 +68,50 @@ INSERT INTO books(name,category,cover,author,published_at) VALUES('Kafka on the 
 INSERT INTO books(name,category,cover,author,published_at) VALUES('The Red Book','Crime','https://www.littlebrown.com/wp-content/uploads/2020/12/9780316499408-1.jpg?fit=484%2C750','James Patterson','2021-03-29');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Along Came a Spider','Crime','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388272560l/13145.jpg','James Patterson','1993-02-01');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Ali Cross','Crime','https://s3.amazonaws.com/ArchiveImages/LegacyReviews/SLJ/9780316530415.jpg','James Patterson','2019-11-25');
+
+UPDATE public.books 
+	set cover = 'https://upload.wikimedia.org/wikipedia/pt/6/6d/Codigo-da-vinci-poster091.jpg' 
+		WHERE
+			id = 1
+			RETURNING *
+
+UPDATE public.authors
+	set birth_year =  1948
+		WHERE
+			id = 6
+			RETURNING *
+
+SELECT DISTINCT category
+FROM public.books
+
+SELECT * 
+FROM public.books
+	WHERE category LIKE 'Fantasy'
+
+SELECT * 
+FROM public.books
+	WHERE name LIKE 'F%'
+
+SELECT * 
+FROM public.books
+	WHERE name LIKE '%Giants%'
+
+SELECT * 
+FROM public.authors
+	WHERE birth_year > 1961
+
+SELECT * 
+FROM public.authors
+	WHERE birth_year < 1981
+
+SELECT category,published_at
+FROM public.books
+
+SELECT COUNT(*)
+FROM public.books
+
+SELECT *
+FROM public.authors
+	ORDER BY (Now(), birth_year) ASC
+
 
