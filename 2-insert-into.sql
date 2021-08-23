@@ -21,5 +21,22 @@ INSERT INTO books(name,category,cover,author,published_at) VALUES('The Alchemist
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Veronika Decides to Die','Quest','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348139939l/1431.jpg','Paulo Coelho','1998-01-01');
 INSERT INTO books(name,category,cover,author,published_at) VALUES('Manual of the Warrior of Light','Quest','https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSApELMTg6SEtoH-AohZrAYSrKfjBTZf_Z2ThKKTwvPgwkGGbUX','Paulo Coelho','1997-01-01');
 
+INSERT INTO books(name,category,cover,author,published_at) VALUES('The Pillars of the Earth','Historical','https://cdn.waterstones.com/bookjackets/large/9781/5098/9781509848492.jpg','Ken Follett','1989-01-01');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('Fall of Giants','Historical','https://m.media-amazon.com/images/I/51PSEPcKYsL.jpg','Ken Follett','2010-09-10');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('World Without End','Historical','https://cdn.waterstones.com/bookjackets/large/9781/5098/9781509848508.jpg','Ken Follett','2007-01-01');
 
+INSERT INTO books(name,category,cover,author,published_at) VALUES('A time to kill','Legal thriller,','https://m.media-amazon.com/images/I/51n7m1p75EL.jpg','John Grisham','1989-01-01');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('The Firm','Legal thriller,','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTXx8M53kMLeKIUs26LgdsD_pDad2MWyqL7m2f491ChHhrWZ8Y','John Grisham','1991-02-01');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('A Time for Mercy','Legal thriller,','https://images-na.ssl-images-amazon.com/images/I/913YS-xyYBL.jpg','John Grisham','2020-10-13');
 
+INSERT INTO books(name,category,cover,author,published_at) VALUES('The Gunslinger','Fantasy,','https://images-na.ssl-images-amazon.com/images/I/4153HF0AQAL.jpg','Stephen King','2003-07-01');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('The Shining','Horror','https://upload.wikimedia.org/wikipedia/en/4/4c/Shiningnovel.jpg','Stephen King','1977-01-28');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('It','Horror,','https://upload.wikimedia.org/wikipedia/en/7/78/It_%28Stephen_King_novel_-_cover_art%29.jpg','Stephen King','1986-09-15');
+
+INSERT INTO books(name,category,cover,author,published_at) VALUES('Norwegian Wood','Romance','https://images-na.ssl-images-amazon.com/images/I/91fJxgs69QL.jpg','Haruki Murakami','1987-01-01');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('1Q84','Alternate history','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBQZSg-b2LFkLlt9fWndS1w8SONabDZBHf0dtdb3-bqcuKxduL','Haruki Murakami','2011-05-25');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('Kafka on the Shore','Fantasy','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHFU_j93PPsbQGqoaZJnHH6-Emk_sIxG823SkoRTL0nvdEP41f','Haruki Murakami','2002-09-12');
+
+INSERT INTO books(name,category,cover,author,published_at) VALUES('The Red Book','Crime','https://www.littlebrown.com/wp-content/uploads/2020/12/9780316499408-1.jpg?fit=484%2C750','James Patterson','2021-03-29');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('Along Came a Spider','Crime','https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388272560l/13145.jpg','James Patterson','1993-02-01');
+INSERT INTO books(name,category,cover,author,published_at) VALUES('Ali Cross','Crime','https://s3.amazonaws.com/ArchiveImages/LegacyReviews/SLJ/9780316530415.jpg','James Patterson','2019-11-25');
